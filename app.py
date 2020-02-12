@@ -44,13 +44,13 @@ class myHandler(BaseHTTPRequestHandler):
 				mimetype='image/jpg'
 				sendReply = True
 			if self.path.endswith(".gif"):
-				mimetype='image/gif'
+				mimetype='fondo3/gif'
 				sendReply = True
 			if self.path.endswith(".js"):
 				mimetype='application/javascript'
 				sendReply = True
 			if self.path.endswith(".css"):
-				mimetype='text/css'
+				mimetype='ICITS/css'
 				sendReply = True
 
 			if sendReply == True:
