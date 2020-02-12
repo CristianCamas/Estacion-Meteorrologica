@@ -1,0 +1,85 @@
+body {
+  padding-left: 0em;
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  font-size: 80%;	
+  color: white;
+  background-color: #d8da3d }
+  
+  
+  p{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  color: yellow;	
+  font-size: 250%;  
+  }
+  
+  p1{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 2em;  
+  color: white;	
+  font-size: 220%;  
+  }
+  
+  p2{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 13em;
+  color: white;	
+  font-size: 220%;  
+  }
+  
+  p3{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 25em;
+  color: white;	
+  font-size: 220%;  
+  } 
+ 
+  p4{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 35em;
+  color: white;	
+  font-size: 220%;  
+  }
+ 
+  p5{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 45em;
+  color: white;	
+  font-size: 220%;  
+  }
+  
+  p6{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  color: white;	
+  font-size: 180%;  
+  } 
+ 
+  im1 {
+	position: absolute;
+	padding: 0;
+    margin: 0;
+	top: 0em;
+    left: 0em;
+	}
+
+  address {
+    margin-top: 1em;
+    padding-top: 1em;
+	font-size: 120%;
+	color: yellow;	
+    border-top: thin dotted }
+	
+  
+	
