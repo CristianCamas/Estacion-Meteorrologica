@@ -28,7 +28,7 @@ class myHandler(BaseHTTPRequestHandler):
 		print('hola como estas')
 		datos=''
 		if self.path=="/":  #127.0.0.1:5000/
-			nombre="estacion_meteorologica.html" #127.0.0.1:5000/index.html
+			nombre="index.html" #127.0.0.1:5000/index.html
 		try:
 			#Check the file extension required and
 			#set the right mime type
@@ -40,30 +40,30 @@ class myHandler(BaseHTTPRequestHandler):
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if self.path.endswith(".jpg"):
+			if nombre.path.endswith(".jpg"):
 				mimetype='image/jpg'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if self.path.endswith(".png"):
+			if nombre.path.endswith(".png"):
 				mimetype='image/jpg'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
-			if self.path.endswith(".gif"):
+			if nombre.path.endswith(".gif"):
 				mimetype='image/gif'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if self.path.endswith(".js"):
+			if nombre.path.endswith(".js"):
 				mimetype='application/javascript'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if self.path.endswith(".css"):
+			if nombre.path.endswith(".css"):
 				mimetype='text/css'
 				f=open(nombre)
 				datos=f.read()
