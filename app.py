@@ -42,28 +42,29 @@ class myHandler(BaseHTTPRequestHandler):
 				sendReply = True
 			if nombre.endswith(".jpg"):
 				mimetype='image/jpg'
-				f=open(nombre)
+				print('img:'+nombre)
+				f=open(nombre,'rb')
 				datos=f.read()
 				f.close()
 				sendReply = True
 			if nombre.endswith(".png"):
-				mimetype='image/jpg'
-				f=open(nombre)
+				mimetype='image/png'
+				f=open(nombre,'rb')
 				datos=f.read()
 				f.close()
-			if nombre.endswith(".gif"):
+			if self.path.endswith(".gif"):
 				mimetype='image/gif'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if nombre.endswith(".js"):
+			if self.path.endswith(".js"):
 				mimetype='application/javascript'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if nombre.endswith(".css"):
+			if self.path.endswith(".css"):
 				mimetype='text/css'
 				f=open(nombre)
 				datos=f.read()
