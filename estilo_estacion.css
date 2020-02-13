@@ -59,12 +59,60 @@ body {
   font-size: 220%;  
   }
   
+  h1{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 2em;  
+  color: white;	
+  font-size: 220%;  
+  }
+  
+  h2{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 13em;
+  color: white;	
+  font-size: 220%;  
+  }
+  
+  h3{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 25em;
+  color: white;	
+  font-size: 220%;  
+  } 
+ 
+  h4{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 35em;
+  color: white;	
+  font-size: 220%;  
+  }
+ 
+  h5{
+  font-family: Papyrus, "Times New Roman",
+    Times, serif;
+  position: absolute;
+  left: 45em;
+  color: white;	
+  font-size: 220%;  
+  }
   p6{
   font-family: Papyrus, "Times New Roman",
     Times, serif;
   color: white;	
   font-size: 180%;  
-  } 
+  }
+  
+  h1{
+	
+  }
  
   im1 {
 	position: absolute;
