@@ -40,30 +40,30 @@ class myHandler(BaseHTTPRequestHandler):
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if nombre.path.endswith(".jpg"):
+			if nombre.endswith(".jpg"):
 				mimetype='image/jpg'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if nombre.path.endswith(".png"):
+			if nombre.endswith(".png"):
 				mimetype='image/jpg'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
-			if nombre.path.endswith(".gif"):
+			if nombre.endswith(".gif"):
 				mimetype='image/gif'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if nombre.path.endswith(".js"):
+			if nombre.endswith(".js"):
 				mimetype='application/javascript'
 				f=open(nombre)
 				datos=f.read()
 				f.close()
 				sendReply = True
-			if nombre.path.endswith(".css"):
+			if nombre.endswith(".css"):
 				mimetype='text/css'
 				f=open(nombre)
 				datos=f.read()
