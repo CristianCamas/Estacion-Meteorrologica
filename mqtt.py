@@ -5,18 +5,11 @@ import os, urlparse
 #led=0/1
 #sensor=p/l/i
 def accion(msg):
-	if(msg=='5000+3000'):
-		mensaje=msg.split('+')
-		a=int(mensaje[0])
-		b=int(mensaje[1])
-		c=a+b
-		print('suma = '+str(c))
-		if(msg=='5000-3000'):
-			mensaje2=msg.split('-')
-			n=int(mensaje2[0])
-			m=int(mensaje2[1])
-			d=n-m
-			print('resta = '+str(d))
+	
+	mensa=msg.split('=')
+	grado=float(mensa[1])
+	p.ChangeDutyCycle(grado)    #Enviamos un pulso del 4.5% para girar el servo hacia la izquierda
+	time.sleep(1)
 
 # Define event callbacks
     
@@ -74,8 +67,10 @@ while rc == 0:
 print("rc: " + str(rc))
 '''
 import time
+import pigpio
 import RPi.GPIO as GPIO
 import sys
+import math
 import datetime
 import Adafruit_DHT
 
@@ -84,8 +79,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(10, GPIO.IN)
 GPIO.setup(9, GPIO.IN)
 
-GPIO.setup(12, GPIO.IN)
-GPIO.setup(13, GPIO.IN)
+GPIO.setup(18, GPIO.IN)
+GPIO.setup(19, GPIO.IN)
 
 GPIO.setup(24, GPIO.IN)
 GPIO.setup(25, GPIO.IN)
@@ -93,8 +88,12 @@ GPIO.setup(25, GPIO.IN)
 GPIO.setup(5, GPIO.IN)
 GPIO.setup(6, GPIO.IN)
 
+
 #define the pin that goes to the circuit
 pin_to_circuit = 27
+GPIO.setup(12,GPIO.OUT)    #Ponemos el pin  como salida
+p = GPIO.PWM(12,50)        #Ponemos el pin 21 en modo PWM y enviamos 50 pulsos por segundo
+p.start(0.1)
 
 def rc_time (pin_to_circuit):
 	count = 0
@@ -188,12 +187,12 @@ def main():
 				#time.sleep(1)
 				publish('Dir=NE')
 				mqttc.loop()
-			elif GPIO.input(12) == True:
+			elif GPIO.input(18) == True:
 				print("Este")
 				#time.sleep(1)
 				publish('Dir=Este')
 				mqttc.loop()
-			elif GPIO.input(13) == True:
+			elif GPIO.input(19) == True:
 				print("SE")
 				#time.sleep(1)
 				publish('Dir=SE')
@@ -223,6 +222,7 @@ def main():
 
 		except KeyboardInterrupt:
 # Reset GPIO settings
+			p.stop()
 			GPIO.cleanup()
 
 print("Estacion Metereologica")

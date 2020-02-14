@@ -63,11 +63,26 @@ function onloadFcn(){
   }
 
     // called when a message arrives
-  function ledon() {
-	sendMessage('5000+3000')	
+  function G0() {
+	sendMessage('grado=0')	
   }
-  function ledoff(){
-	sendMessage('5000-3000')
+  function G30() {
+	sendMessage('grado=1.6')	
+  }
+  function G60() {
+	sendMessage('grado=3.2')	
+  }
+  function G90() {
+	sendMessage('grado=5')	
+  }
+  function G120() {
+	sendMessage('grado=6.6')	
+  }
+  function G150() {
+	sendMessage('grado=8.2')	
+  }
+  function G180() {
+	sendMessage('grado=10')	
   }
 
   function action(msg) {
