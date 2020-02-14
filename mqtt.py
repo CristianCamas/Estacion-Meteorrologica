@@ -63,8 +63,8 @@ mqttc.subscribe('led', 0)
 mqttc.publish(topic_tx, 'test')
 #mqttc.publish(topic,topic)
 # Continue the network loop, exit when an error occurs
-rc = 0
-import time
+
+
 '''i=0
 while rc == 0:
 	time.sleep(2)
@@ -73,6 +73,7 @@ while rc == 0:
 	rc=mqttc.loop()
 print("rc: " + str(rc))
 '''
+import time
 import RPi.GPIO as GPIO
 import sys
 import datetime
@@ -155,57 +156,66 @@ def main():
 	while True :
 		try:
 			humidity, temperature = Adafruit_DHT.read_retry(11, 16)
-			print 'Temp: {0:0.1f} C  Humidity: {1:0.1f} %'.format(temperature, humidity)
+			print 'Temperatura: {0:0.1f} C  Humedad: {1:0.1f} %'.format(temperature, humidity)
 			publish('Temperatura='+str(temperature))
 			mqttc.loop()
 			publish('Humedad= '+str(humidity))
 			mqttc.loop()
-			print(rc_time(pin_to_circuit))
-			publish('Luz='+str(rc_time(pin_to_circuit)))
-			mqttc.loop()
+			if(rc_time(pin_to_circuit)<200):
+				print('Muy Luminoso= '+str(rc_time(pin_to_circuit)))
+				publish('Luz=Muy Luminoso')
+				mqttc.loop()
+			elif(rc_time(pin_to_circuit)>201 or rc_time(pin_to_circuit)<1000):
+				print('Luz Normal= '+str(rc_time(pin_to_circuit)))
+				publish('Luz=Luz Normal')
+				mqttc.loop()
+			elif(rc_time(pin_to_circuit)>1000):
+				print('Obscuro= '+str(rc_time(pin_to_circuit)))
+				publish('Luz=Obscuro')
+				mqttc.loop()
 			print(detectSensor(17))
-			time.sleep(0.1)
+			time.sleep(0.5)
 			publish('Viento='+str(detectSensor(17)))
 			mqttc.loop()
 			print("-")
 			if GPIO.input(10) == True:
 				print("Norte")
-				time.sleep(1)
+				#time.sleep(1)
 				publish('Dir=Norte')
 				mqttc.loop()
 			elif GPIO.input(9) == True:
 				print("NE")
-				time.sleep(1)
+				#time.sleep(1)
 				publish('Dir=NE')
 				mqttc.loop()
 			elif GPIO.input(12) == True:
-				print("Oeste")
-				time.sleep(1)
-				publish('Dir=Oeste')
+				print("Este")
+				#time.sleep(1)
+				publish('Dir=Este')
 				mqttc.loop()
 			elif GPIO.input(13) == True:
 				print("SE")
-				time.sleep(1)
+				#time.sleep(1)
 				publish('Dir=SE')
 				mqttc.loop()
 			elif GPIO.input(24) == True:
 				print("Sur")
-				time.sleep(1)
+				#time.sleep(1)
 				publish('Dir=Sur')
 				mqttc.loop()
 			elif GPIO.input(25) == True:
 				print("SO")
-				time.sleep(1)
+				#time.sleep(1)
 				publish('Dir=SO')
 				mqttc.loop()
-			elif GPIO.input(6) == True:
-				print("Este")
-				time.sleep(1)
-				publish('Dir=Este')
+			elif GPIO.input(5) == True:
+				print("Oeste")
+				#time.sleep(1)
+				publish('Dir=Oeste')
 				mqttc.loop()
 			elif GPIO.input(6) == True:
 				print("NO")
-				time.sleep(1)
+				#time.sleep(1)
 				publish('Dir=NO')
 				mqttc.loop()
 			else: 
@@ -215,14 +225,9 @@ def main():
 # Reset GPIO settings
 			GPIO.cleanup()
 
-
-
-print("Setup GPIO pin as input on GPIO14")
-
-
+print("Estacion Metereologica")
 GPIO.setup(17 , GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.add_event_detect(17, GPIO.BOTH, callback=detectSensor, bouncetime=200)
 start = time.time()
-
 if __name__=="__main__":
 	main()
